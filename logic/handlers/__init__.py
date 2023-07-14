@@ -6,7 +6,9 @@ import paho.mqtt.client as mqtt
 from aiogram import Router
 from logic.access_control import TelegramCsvBasedAccessControl
 from logic.data_providers import CsvDataSource
+from dotenv.main import load_dotenv
 
+load_dotenv()
 router = Router()
 MQTT_URL = os.getenv('MQTT_URL')
 MQTT_PORT = 1883
