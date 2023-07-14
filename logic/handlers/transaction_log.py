@@ -1,5 +1,4 @@
 import logging
-import os
 
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
