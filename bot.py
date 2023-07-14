@@ -5,16 +5,14 @@ import sys
 
 from aiogram import Bot, Dispatcher
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from dotenv.main import load_dotenv
 
 import logic.handlers
 import logic.handlers.start
 import logic.handlers.door
 import logic.handlers.transaction_log
+import logic.handlers.dod
 import logic.handlers.echo
 from logic.data_providers import ResidentDataSource
-
-load_dotenv()
 
 scheduler = AsyncIOScheduler()
 
