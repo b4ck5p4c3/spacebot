@@ -13,9 +13,9 @@ from logic.states import PossibleStates
 @router.message(PossibleStates.open, F.text.casefold() == 'да')
 async def open_the_door(message: Message, state: FSMContext) -> None:
     await state.set_state(PossibleStates.start)
-    if client.is_connected() is False:
-        client.reconnect()
     try:
+        if client.is_connected() is False:
+            client.reconnect()
         publish_result = client.publish('bus/telegram/message', json.dumps({'userid': message.from_user.id}))
         if publish_result.is_published() is False:
             raise IOError('mqtt publish_result._published is False')
