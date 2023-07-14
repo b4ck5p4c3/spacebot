@@ -28,7 +28,7 @@ async def main() -> None:
 
 
 async def send_deposit_notifications(dp: Dispatcher, bot):
-    data_source = ResidentDataSource(logic.handlers.DATA_SOURCE_TOKEN, logic.handlers.DATA_SOURCE_HOST)
+    data_source = ResidentDataSource(logic.handlers.DATA_SOURCE_HOST, logic.handlers.DATA_SOURCE_TOKEN)
     if data_source.get_records_count() <= 0:
         return
     for record in data_source.get_records():
