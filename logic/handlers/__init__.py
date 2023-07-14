@@ -29,4 +29,8 @@ def on_connect_fail(client, userdata, flags, rc):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_connect_fail = on_connect_fail
-client.connect(MQTT_URL, MQTT_PORT, 60)
+try:
+    client.connect(MQTT_URL, MQTT_PORT, 60)
+except (ValueError, BaseException) as e:
+    logging.error(f"mqtt connect failed ({e})")
+
