@@ -32,7 +32,7 @@ async def send_deposit_notifications(dp: Dispatcher, bot):
     if data_source.get_records_count() <= 0:
         return
     for record in data_source.get_records():
-        if record.debt <= 0:
+        if record.debt >= 0:
             continue
         summ = record.debt / 100
         await bot.send_message(chat_id=record.id, text=f"Необходимо пополнить баланс на {summ} рублей")
