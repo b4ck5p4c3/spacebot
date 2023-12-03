@@ -1,3 +1,5 @@
+import logging
+
 import openapi_client
 from openapi_client.rest import ApiException
 
@@ -76,7 +78,7 @@ class TransactionDataSource(OpenApiDataSource):
                 api_response = api_instance.transaction_log(cls._user_id)
                 return api_response
             except ApiException as e:
-                print("Exception when calling ResidentsApi->list_residents: %s\n" % e)
+                logging.error("Exception when calling ResidentsApi->list_residents: %s" % e)
         return []
 
 
@@ -92,7 +94,7 @@ class ResidentDataSource(OpenApiDataSource):
                 api_response = api_instance.list_residents(limit=limit, offset=offset)
                 return api_response
             except ApiException as e:
-                print("Exception when calling ResidentsApi->list_residents: %s\n" % e)
+                logging.error("Exception when calling ResidentsApi->list_residents: %s" % e)
         return []
 
 
