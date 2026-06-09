@@ -170,5 +170,6 @@ class ActiveMembersFromReSwyncaDataSource(OpenApiDataSource):
             only_active: Callable[[MemberDTO], bool] = \
                 lambda r: isinstance(r, MemberDTO) \
                           and r.status == 'active' \
+                          and r.telegram_metadata is not None \
                           and r.telegram_metadata.telegram_name is not None
             return list(filter(only_active, resp))
